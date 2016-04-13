@@ -1,0 +1,7 @@
+settings.py
+torrent
+__pycache__
+*.ass
+*.srt
+*.mkv
+*.mp4
