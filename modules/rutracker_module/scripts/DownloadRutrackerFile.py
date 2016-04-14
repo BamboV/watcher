@@ -29,5 +29,5 @@ def DownloadFile(rtcode,label,mediadir):
 	s.close()
 	seriesdir=os.path.join(mediadir,"series")
 	if not os.path.exists(seriesdir):
-		os.mkdir("seriesdir")
+		os.mkdir(seriesdir)
 	subprocess.call(settings.utorrent_path+" /DIRECTORY "+seriesdir+" "+torrentfile)
