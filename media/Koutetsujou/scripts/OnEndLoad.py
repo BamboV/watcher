@@ -2,19 +2,12 @@ import os
 import subprocess
 import sys
 import shutil
+
 base=os.path.split(os.path.abspath(__file__))[0]
 sys.path.insert(0, os.path.join(base,".."))
 import settings
-seriespath=os.path.join(base,"..","series")
-series=os.listdir(seriespath)
+series=os.listdir(settings.path_to_video)
 watchedpath=os.path.join(base,"watched.txt")
-for s in series:
-	if not "." in s:
-		ddir=os.path.join(seriespath,s)
-		mvfiles=os.listdir(ddir)
-		for mvfile in mvfiles:
-			shutil.move(os.path.join(ddir,mvfile),seriespath)
-		os.rmdir(ddir)
 if os.path.exists(watchedpath):
 	with open(os.path.join(base,"watched.txt"), "r") as code:
 		with open(os.path.join(base,"unwatched.txt"),"a+") as unw:
@@ -26,4 +19,5 @@ if os.path.exists(watchedpath):
 					unw.write(s+"\n")
 
 		
-		
+
+

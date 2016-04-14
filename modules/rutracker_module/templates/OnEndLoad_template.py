@@ -1,16 +1,16 @@
 import os
 import subprocess
 import sys
+import shutil
+
 base=os.path.split(os.path.abspath(__file__))[0]
 sys.path.insert(0, os.path.join(base,".."))
 import settings
-seriespath=os.path.join(base,"..","series")
-series=os.listdir(seriespath)
+series=os.listdir(settings.path_to_video)
 watchedpath=os.path.join(base,"watched.txt")
-
 if os.path.exists(watchedpath):
-	with open("watched.txt", "r") as code:
-		with open("unwatched.txt","a+") as unw:
+	with open(os.path.join(base,"watched.txt"), "r") as code:
+		with open(os.path.join(base,"unwatched.txt"),"a+") as unw:
 			watched=code.read()
 			unw.seek(0)
 			unwached=unw.read()
@@ -19,4 +19,5 @@ if os.path.exists(watchedpath):
 					unw.write(s+"\n")
 
 		
-		
+
+

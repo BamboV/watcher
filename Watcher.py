@@ -44,6 +44,19 @@ if sys.argv[1]=="unwatched":
 					for st in strs:
 						print("\t-"+st)
 	exit()
+if sys.argv[1]=="settings":
+	if len (sys.argv)<3:
+		os.system(os.path.join(basepath,"settings.py"))
+	else:
+		if sys.argv[2]=="-m" and len(sys.argv)>3:
+			settings_path=os.path.join(basepath,"modules",sys.argv[3],"settings.py")
+		else:
+			settings_path=os.path.join(basepath,"media",sys.argv[2],"settings.py")
+		if os.path.exists(settings_path):
+			os.system(settings_path)
+		else:
+			print("There isn't settings file for "+(sys.argv[2] if len(sys.argv)==3 else sys.argv[3]))
+	exit()
 
 	
 print("Error! Where isn't \""+sys.argv[1]+"\" command.")
