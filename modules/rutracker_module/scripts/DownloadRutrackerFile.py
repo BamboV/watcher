@@ -6,7 +6,7 @@ basepath=os.path.split(os.path.abspath(__file__))[0]
 sys.path.insert(0, os.path.join(basepath,".."))
 import settings
 import subprocess
-
+import shutil
 
 def DownloadFile(rtcode,label,mediadir):
 
@@ -21,13 +21,27 @@ def DownloadFile(rtcode,label,mediadir):
 	rt = s.get(settings.rutracker_download_url+rtcode)
 	if not os.path.exists(torrentfolder):
 		os.makedirs(torrentfolder)
-
+	if os.path.exists(torrentfile):
+		shutil.copy(torrentfile,torrentfile+".old")
 	with open(torrentfile, "wb") as code:
-	    code.write(rt.content);
-	    
+	    code.write(rt.content)
 
 	s.close()
+
+	oldfile=torrentfile+".old"
+	if os.path.exists(oldfile):
+		with open(oldfile,"rb") as old:
+			with open(torrentfile,"rb") as new:
+				if old.read()==new.read():
+					print("There wasn't any updates.")
+					return
+
 	seriesdir=os.path.join(mediadir,"series")
 	if not os.path.exists(seriesdir):
 		os.mkdir(seriesdir)
-	subprocess.call(settings.utorrent_path+" /DIRECTORY "+seriesdir+" "+torrentfile)
+	
+
+	path_to_torrent_helper=os.path.join(basepath,"..","..","..","helpers","torrenthelper",settings.torrent_helper,"scripts","download.py")
+	
+	subprocess.call("python "+path_to_torrent_helper+" "+torrentfile+" "+seriesdir)
+	#subprocess.call(settings.utorrent_path+" /DIRECTORY "+seriesdir+" "+torrentfile)

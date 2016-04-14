@@ -3,4 +3,4 @@ rutracker_password=""
 rutracker_login_url=''
 rutracker_download_url=''
 templates_dir=""
-utorrent_path=""
+torrent_helper="utorrent"

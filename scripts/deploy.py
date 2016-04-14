@@ -14,6 +14,6 @@ def Deploy(name,module=""):
 	os.mkdir(os.path.join(directory,"scripts"))
 	if not module=="":
 		subprocess.call("python "+os.path.join(settings.module_dir,module,"scripts","deploy.py")+" "+directory)
-	copyfile(os.path.join(settings.templates_dir,"watch_template.py"),os.path.join(directory,"scripts","watch.py"))
+	#copyfile(os.path.join(settings.templates_dir,"watch_template.py"),os.path.join(directory,"scripts","watch.py"))
 	return 
 

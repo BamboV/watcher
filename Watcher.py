@@ -5,7 +5,7 @@ basepath=os.path.split(os.path.abspath(__file__))[0]
 sys.path.insert(0, "scripts")
 import settings
 import deploy
-
+import deploymodule
 
 if(sys.argv[1]=="watch"):
 	watchpath = os.path.join(basepath, "scripts", "watch.py")
@@ -57,7 +57,12 @@ if sys.argv[1]=="settings":
 		else:
 			print("There isn't settings file for "+(sys.argv[2] if len(sys.argv)==3 else sys.argv[3]))
 	exit()
-
+if sys.argv[1]=="initmodule":
+	if len(sys.argv)==3:
+		deploymodule.Deploy(sys.argv[2])
+	else:
+		deploymodule.Deploy(sys.argv[2],sys.argv[3])
+	exit()
 	
 print("Error! Where isn't \""+sys.argv[1]+"\" command.")
 
