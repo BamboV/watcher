@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 basepath=os.path.split(os.path.abspath(__file__))[0]
-sys.path.insert(0, "scripts")
+sys.path.insert(0, os.path.join(basepath,"scripts"))
 import settings
 import deploy
 import deploymodule

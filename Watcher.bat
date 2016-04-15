@@ -1,2 +1,2 @@
 @echo off
-python Watcher.py %*
+python D:\Watcher\Watcher.py %*
