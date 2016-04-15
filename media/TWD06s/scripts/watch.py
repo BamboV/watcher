@@ -1,1 +1,0 @@
-print("watch TWD06s!")

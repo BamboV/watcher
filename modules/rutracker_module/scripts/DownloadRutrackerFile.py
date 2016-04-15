@@ -43,5 +43,5 @@ def DownloadFile(rtcode,label,mediadir):
 
 	path_to_torrent_helper=os.path.join(basepath,"..","..","..","helpers","torrenthelper",settings.torrent_helper,"scripts","download.py")
 	
-	subprocess.call("python "+path_to_torrent_helper+" "+torrentfile+" "+seriesdir)
+	subprocess.Popen("python "+path_to_torrent_helper+" "+torrentfile+" "+seriesdir)
 	#subprocess.call(settings.utorrent_path+" /DIRECTORY "+seriesdir+" "+torrentfile)
